@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import Logo from "./Logo";
-import { DribbbleIcon, GithubIcon, LinkedinIcon, MoonIcon, SunIcon, TwitterIcon } from "../Icons";
+import { InstagramIcon, MoonIcon, SunIcon, TelegramIcon, WhatsappIcon, YoutubeIcon } from "../Icons";
 import siteMetadata from "@/utils/siteMetaData";
 import { useThemeSwitch } from "../Hooks/useThemeSwitch";
 import { useState } from "react";
@@ -52,9 +52,9 @@ const toggle = () =>{
          }}
         
         >
-            <Link href="/" className="mr-2">Home</Link>
-            <Link href="/about" className="mx-2">About</Link>
-            <Link href="/contact" className="mx-2">Contact</Link>
+            <Link href="/" className="mr-2">होम</Link>
+            <Link href="/all" className="mx-2">प्रकार निवडा</Link>
+            <Link href="/contact" className="mx-2">संपर्क</Link>
             <button onClick={() => setMode(mode === "light" ? "dark" : "light")  }
             className={cx("w-6 h-6 ease ml-2 flex items-center justify-center rounded-full p-1", mode === "light" ? "bg-dark text-light" :
             "bg-light text-dark" )}
@@ -69,9 +69,13 @@ const toggle = () =>{
 
         <nav className=" w-max py-3 px-8 border border-solid border-dark rounded-full font-medium capitalize  items-center hidden sm:flex
         fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50">
-            <Link href="/" className="mr-2">Home</Link>
-            <Link href="/about" className="mx-2">About</Link>
-            <Link href="/contact" className="mx-2">Contact</Link>
+            <Link href="/" className="mr-2">होम</Link>
+            <Link href="/categories/सरकारी-योजना" className="mx-2">सरकारी योजना</Link>
+            <Link href="/categories/स्कॉलरशिप" className="mx-2">स्कॉलरशिप</Link>
+
+            <Link href="/categories/मराठी-बातम्या" className="mx-2">मराठी बातम्या</Link>
+
+            <Link href="/categories/ऑनलाइन-फॉर्म" className="mx-2">ऑनलाइन फॉर्म</Link>
             <button onClick={() => setMode(mode === "light" ? "dark" : "light")  }
             className={cx("w-6 h-6 ease ml-2 flex items-center justify-center rounded-full p-1", mode === "light" ? "bg-dark text-light" :
             "bg-light text-dark" )}
@@ -83,10 +87,10 @@ const toggle = () =>{
             </button>
         </nav>
         <div className=" hidden sm:flex items-center">
-            <a href={siteMetadata.linkedin} rel="noopener noreferrer" className="inline-block w-6 h-6 mr-4" aria-label="Reach out to me via LinkedIn" target="_blank"><LinkedinIcon className="hover:scale-125 transition-all ease duration-200" /></a>
-            <a href={siteMetadata.twitter} rel="noopener noreferrer" className="inline-block w-6 h-6 mr-4" aria-label="Reach out to me via Twitter" target="_blank"><TwitterIcon className="hover:scale-125 transition-all ease duration-200" /></a>
-            <a href={siteMetadata.github} rel="noopener noreferrer" className="inline-block w-6 h-6 mr-4" aria-label="Check my profile on Github" target="_blank"><GithubIcon className="  hover:scale-125 transition-all ease duration-200 dark:fill-light" /></a>
-            <a href={siteMetadata.dribbble} rel="noopener noreferrer" className="inline-block w-6 h-6 mr-4" aria-label="Check my profile on Dribbble" target="_blank"><DribbbleIcon className="hover:scale-125 transition-all ease duration-200" /></a>
+            <a href={siteMetadata.whatsapp} rel="noopener noreferrer" className="inline-block w-6 h-6 mr-4" aria-label="Reach out to me via LinkedIn" target="_blank"><WhatsappIcon className="hover:scale-125 transition-all ease duration-200" /></a>
+            <a href={siteMetadata.telegram} rel="noopener noreferrer" className="inline-block w-6 h-6 mr-4" aria-label="Reach out to me via Twitter" target="_blank"><TelegramIcon className="hover:scale-125 transition-all ease duration-200" /></a>
+            <a href={siteMetadata.youtube} rel="noopener noreferrer" className="inline-block w-6 h-6 mr-4" aria-label="Check my profile on Github" target="_blank"><YoutubeIcon className="  hover:scale-125 transition-all ease duration-200 dark:fill-light" /></a>
+            <a href={siteMetadata.instagram} rel="noopener noreferrer" className="inline-block w-6 h-6 mr-4" aria-label="Check my profile on Dribbble" target="_blank"><InstagramIcon className="hover:scale-125 transition-all ease duration-200" /></a>
         </div>
     </header>
   )

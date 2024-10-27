@@ -2,11 +2,11 @@ import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { extractImageFromHTML } from "../Home/extractImageFromHTML";
 import { slug } from "github-slugger";
+import extractImageFromHTML from "../Home/extractImageFromHTML";
 
 const BlogLayoutTwo = ({ blog }) => {
-  const imageSrc = extractImageFromHTML(blog?.content) || "https://res.cloudinary.com/dx09awqqv/image/upload/v1728469381/ss0en9wneflabphzhaz1.png"; // Fallback placeholder if no image found
+  const imageSrc = extractImageFromHTML(blog?.content); // Fallback placeholder if no image found
 
   return (
     <div className="group grid grid-cols-12 gap-4 items-center text-dark dark:text-light">
@@ -15,13 +15,13 @@ const BlogLayoutTwo = ({ blog }) => {
         className=" col-span-12  lg:col-span-4 h-full rounded-xl overflow-hidden"
       >
         <Image
-          src={imageSrc}
+          src={imageSrc || null}
           // placeholder="blur"
           // blurDataURL={blog.image.blurhashDataUrl}
-          alt={blog?.title}
+          alt={blog?.title || null}
           width={1920} // Use the actual width of the image
           height={1280} // Use the actual height of the image
-          className="aspect-square w-full h-full object-cover object-center group-hover:scale-105 transition-all ease duration-300"
+          className="aspect-square w-full h-full  object-center group-hover:scale-105 transition-all ease duration-300"
           sizes="(max-width: 640px) 100vw,(max-width: 1024px) 50vw, 33vw"
         />
       </Link>

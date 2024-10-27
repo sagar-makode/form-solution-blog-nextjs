@@ -3,11 +3,11 @@ import Tag from "../Elements/Tag";
 import Link from "next/link";
 import Image from "next/image";
 import { slug } from "github-slugger";
-import { extractImageFromHTML } from "../Home/extractImageFromHTML";
+import extractImageFromHTML from "../Home/extractImageFromHTML";
 
 const BlogLayoutOne = ({ blog }) => {
 
-  const imageSrc = extractImageFromHTML(blog?.content) || "https://res.cloudinary.com/dx09awqqv/image/upload/v1728469381/ss0en9wneflabphzhaz1.png"; // Fallback placeholder if no image found
+  const imageSrc = extractImageFromHTML(blog?.content) ; // Fallback placeholder if no image found
 
   return (
     <div className="group inline-block overflow-hidden rounded-xl">
@@ -17,13 +17,13 @@ const BlogLayoutOne = ({ blog }) => {
             "
       />
       <Image
-        src={imageSrc}
+        src={imageSrc || null}
         // placeholder="blur"
         // blurDataURL={blog.image.blurhashDataUrl}
-        alt={blog?.title}
+        alt={blog?.title || null}
         width={1920} // Use the actual width of the image
         height={1280} // Use the actual height of the image
-        className="w-full h-full object-center object-cover rounded-xl group-hover:scale-105 transition-all ease duration-300"
+        className="w-full h-full object-center  rounded-xl group-hover:scale-105 transition-all ease duration-300"
         sizes="(max-width: 1180px) 100vw, 50vw"
       />
 

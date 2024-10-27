@@ -4,22 +4,7 @@ import Link from 'next/link';
 import React from 'react'
 import Tag from '../Elements/Tag';
 import { slug } from 'github-slugger';
-
-
-// Client-side only image extraction
-const extractImageFromHTML = (htmlContent) => {
-    
-    if (typeof window !== "undefined") {
-        const doc = new DOMParser().parseFromString(htmlContent, 'text/html');
-        console.log(doc,"doc");
-
-        const img = doc.querySelector('img');
-        console.log(img,"img");
-
-        return img ? img.src : null; // Return the src attribute of the first img tag
-    }
-    return null;
-};
+import extractImageFromHTML from './extractImageFromHTML';
 
 
 
@@ -28,7 +13,8 @@ const HomeCoverSection = ({ blogs }) => {
     const sortedBlogs = sortBlogs(blogs);
     const blog = sortedBlogs[0];
 
-    const imageSrc = extractImageFromHTML(blog?.content); // Fallback placeholder if no image found
+    const imageSrc = extractImageFromHTML(blog?.content) || null; // Fallback placeholder if no image found
+    
 
     return (
         <div className='w-full inline-block'>
@@ -36,12 +22,12 @@ const HomeCoverSection = ({ blogs }) => {
                 <div className='absolute top-0 left-0 bottom-0 right-0 h-full
             bg-gradient-to-b from-transparent from-0% to-dark/90 rounded-3xl z-0
             ' />
-                <Image src={imageSrc}
+                <Image src={imageSrc || null}
                     // placeholder='blur'
                     // blurDataURL={blog.image.blurhashDataUrl}
-                    alt={blog?.title}
+                    alt={blog?.title || null}
                     fill
-                    className='w-full h-full object-center object-cover rounded-3xl -z-10'
+                    className='w-full h-full object-center  rounded-3xl -z-10'
                     sizes='100vw'
                     // width={1920}
                     // height={1237}

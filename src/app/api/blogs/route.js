@@ -8,11 +8,9 @@ export async function GET(req) {
   try {
     // Get the query parameters from the request URL
     const { searchParams } = new URL(req.url);
-    // console.log(searchParams,"searchparams");
     
     
     const title = searchParams.get("title"); // Get the title parameter
-console.log(title, 'title');
 
     let blogs;
 

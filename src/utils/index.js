@@ -14,8 +14,8 @@ export const sortBlogs = (blogs) => {
   return blogs
     .slice()
     .sort((a, b) => {
-      const dateA = a.publishedAt ? parseISO(a.publishedAt) : new Date(0); // Fallback to epoch if undefined
-      const dateB = b.publishedAt ? parseISO(b.publishedAt) : new Date(0); // Fallback to epoch if undefined
+      const dateA = a.createdAt ? parseISO(a.createdAt) : new Date(0); // Fallback to epoch if undefined
+      const dateB = b.createdAt ? parseISO(b.createdAt) : new Date(0); // Fallback to epoch if undefined
       return compareDesc(dateA, dateB);
     });
 };

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { DribbbleIcon, GithubIcon, LinkedinIcon, TwitterIcon } from "../Icons";
+import {  InstagramIcon, TelegramIcon, WhatsappIcon, YoutubeIcon } from "../Icons";
 import Link from "next/link";
 import siteMetadata from "@/utils/siteMetaData";
 
@@ -12,16 +12,14 @@ const Footer = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
-  console.log(errors);
 
   return (
     <footer className="mt-16 rounded-2xl bg-dark dark:bg-accentDark/90 m-2 sm:m-10 flex flex-col items-center text-light dark:text-dark">
       <h3 className="mt-16 font-medium dark:font-bold text-center capitalize text-2xl sm:text-3xl lg:text-4xl px-4">
-        Interesting Stories | Updates | Guides
+      विविध सरकारी योजना | फॉर्म मार्गदर्शन | महत्वाच्या शासकीय अपडेट्स
       </h3>
       <p className="mt-5 px-4 text-center w-full sm:w-3/5 font-light dark:font-medium text-sm sm:text-base">
-        Subscribe to learn about new technology and updates. Join over 5000+
-        members community to stay up to date with latest news.
+      आम्ही या चॅनलवर विविध सरकारी योजनांचे फॉर्म कसे भरायचे, तसेच राज्य सरकार आणि केंद्र सरकारच्या योजनांबद्दल संपूर्ण माहिती देतो. 23000+ सदस्यांच्या समुदायामध्ये सामील व्हा आणि ताज्या बातम्या जाणून घ्या.
       </p>
 
       <form
@@ -42,46 +40,46 @@ const Footer = () => {
       </form>
       <div className="flex items-center mt-8">
         <a
-          href={siteMetadata.linkedin}
+          href={siteMetadata.whatsapp}
           className="inline-block w-6 h-6 mr-4"
           aria-label="Reach out to me via LinkedIn"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <LinkedinIcon className="hover:scale-125 transition-all ease duration-200" />
+          <WhatsappIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
         <a
-          href={siteMetadata.twitter}
+          href={siteMetadata.telegram}
           className="inline-block w-6 h-6 mr-4"
           aria-label="Reach out to me via Twitter"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
+          <TelegramIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
         <a
-          href={siteMetadata.github}
+          href={siteMetadata.instagram}
           className="inline-block w-6 h-6 mr-4 fill-light"
           aria-label="Check my profile on Github"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <GithubIcon className="fill-light dark:fill-dark  hover:scale-125 transition-all ease duration-200" />
+          <InstagramIcon className="fill-light dark:fill-dark  hover:scale-125 transition-all ease duration-200" />
         </a>
         <a
-          href={siteMetadata.dribbble}
+          href={siteMetadata.youtube}
           className="inline-block w-6 h-6 mr-4"
           aria-label="Check my profile on Dribbble"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <DribbbleIcon className="hover:scale-125 transition-all ease duration-200" />
+          <YoutubeIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
       </div>
 
       <div className="w-full  mt-16 md:mt-24 relative font-medium border-t border-solid border-light py-6 px-8 flex  flex-col md:flex-row items-center justify-between">
         <span className="text-center">
-          &copy;2023 CodeBucks. All rights reserved.
+          &copy;2024 Form Solution. All rights reserved.
         </span>
         <Link
           href="/sitemap.xml"
@@ -91,8 +89,8 @@ const Footer = () => {
         </Link>
         <div className="text-center">
           Made with &hearts; by{" "}
-          <a href="https://devdreaming.com" className="underline" target="_blank">
-            CodeBucks
+          <a href="/" className="underline" target="_blank">
+            Form Solution
           </a>
         </div>
       </div>

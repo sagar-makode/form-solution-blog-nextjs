@@ -1,25 +1,11 @@
-// utils/htmlUtils.js
+import * as cheerio from 'cheerio';
 
-export const extractImageFromHTML = (htmlContent, options = {}) => {
-  if (typeof window !== 'undefined') {
-    // Only run this code in the browser
-    const doc = new DOMParser().parseFromString(htmlContent, 'text/html');
-
-    if (options.all) {
-      // If 'all' option is true, return an array of all image sources
-      const images = Array.from(doc.querySelectorAll('img'));
-      return images.map((img) => img.src);
-    } else {
-      // Otherwise, return the src of the first image
-      const img = doc.querySelector('img');
-      return img ? img.src : null; // Return the src attribute of the first img tag
-    }
-  }
-  return null; // Return null during SSR
+const extractImageFromHTML = (htmlContent) => {
+    // Load HTML content with Cheerio
+    const $ = cheerio.load(htmlContent);
+    // Select the first image element and get its 'src' attribute
+    const imgSrc = $('img').attr('src');
+    return imgSrc || null; // Return null if no image is found
 };
 
-  
-  // Example usage:
-  // const firstImageSrc = extractImageFromHTML(htmlContent);
-  // const allImageSrcs = extractImageFromHTML(htmlContent, { all: true });
-  
+export default extractImageFromHTML;
