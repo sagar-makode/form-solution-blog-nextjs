@@ -1,5 +1,5 @@
 export async function fetchAllBlogs() {
-  const res = await fetch("http://127.0.0.1:3000/api/blogs");
+  const res = await fetch("https://form-solution.vercel.app/api/blogs");
   
 
   if (!res.ok) {
