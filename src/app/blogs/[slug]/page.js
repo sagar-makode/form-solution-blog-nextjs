@@ -8,7 +8,7 @@ import extractImageFromHTML from "@/components/Home/extractImageFromHTML";
 import { format } from "date-fns";
 
 export async function generateStaticParams() {
-  let allBlogs = await fetchBlogs()  
+  let allBlogs = await fetchBlogs()
   return allBlogs.map((blog) => ({ slug: slugify(blog.title) }));
 }
 
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
 
     return slugifiedTitle === decodedSlug;
   });
-  
+
   if (!blog) {
     return;
   }
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
 
 
   let imageList = [siteMetadata.socialBanner];
-  
+
   if (blog.content) {
     imageList = extractImageFromHTML(blog.content);
 
@@ -159,10 +159,13 @@ export default async function BlogPage({ params }) {
                   <li key={latestBlog._id} className="flex items-center mb-4">
                     {/* Display the blog image */}
                     <div className="w-16 h-16 mr-4">
-                      <img
+                      <Image
                         src={latestBlog.imageSrc || null}
                         alt={latestBlog.title || null}
                         className=" w-full h-full"
+                        width={1920} // Use the actual width of the image
+                        height={1280} // Use the actual height of the image
+
                       />
                     </div>
                     <a
