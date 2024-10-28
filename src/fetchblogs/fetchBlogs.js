@@ -1,7 +1,7 @@
 export async function fetchBlogs() {
 
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs`, {cache: "no-store",});
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {cache: "no-store",});
         if (!res.ok) {
             const errorText = await res.text();
             console.error("Failed to fetch:", res.status, res.statusText, errorText);
