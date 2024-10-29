@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 
 export async function connect() {
     try {
-        console.log("23 ravan");
         
         mongoose.connect(process.env.MONGODB_URL);
         const connection = mongoose.connection;

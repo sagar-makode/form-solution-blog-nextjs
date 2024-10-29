@@ -2,11 +2,8 @@ import { connect } from "@/lib/db";
 import Blog from "@/models/Blog";
 import { NextResponse } from "next/server";
 
-export async function GET(req) {
-  console.log("start 3");
-  
+export async function GET(req) {  
   await connect();
-  console.log("start 4");
 
 
   try {
