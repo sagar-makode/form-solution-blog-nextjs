@@ -33,16 +33,14 @@ const CategoryPage = async ({ params }) => {
 
   // Step 2: Filter blogs based on the current category (params.slug)
   const filteredBlogs = allBlogs.filter((blog) => {
-    if (slug === "all") {
+    if (decodedSlug === "all") {
       return true; // Include all blogs if 'all' category is selected
     }
     return blog?.tag && slugify(blog.tag) === decodedSlug;
   });
 
   
-  const sortedBlogs = sortBlogs(filteredBlogs);
-  console.log(sortedBlogs);
-  
+  const sortedBlogs = sortBlogs(filteredBlogs);  
 
   return (
     <article className="mt-12 flex flex-col text-dark dark:text-light">
@@ -54,7 +52,7 @@ const CategoryPage = async ({ params }) => {
       </div>
 
       {/* Categories Component */}
-      <Categories categories={allCategories} currentSlug={slug} />
+      <Categories categories={allCategories} currentSlug={decodedSlug} />
 
       {/* Blog Listing */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 mt-5 sm:mt-10 md:mt-24 sxl:mt-32 px-5 sm:px-10 md:px-24 sxl:px-32">
