@@ -53,8 +53,8 @@ const toggle = () =>{
         
         >
             <Link href="/" className="mr-2">होम</Link>
-            <Link href="/all" className="mx-2">प्रकार निवडा</Link>
-            <Link href="/contact" className="mx-2">संपर्क</Link>
+            <Link href="/categories/all" className="mx-2">प्रकार निवडा</Link>
+            {/* <Link href="/contact" className="mx-2">संपर्क</Link> */}
             <button onClick={() => setMode(mode === "light" ? "dark" : "light")  }
             className={cx("w-6 h-6 ease ml-2 flex items-center justify-center rounded-full p-1", mode === "light" ? "bg-dark text-light" :
             "bg-light text-dark" )}

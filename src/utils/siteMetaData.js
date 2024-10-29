@@ -1,12 +1,12 @@
 // please update required information
 const siteMetadata = {
     title: 'Form Solution',
-    author: 'Form Solution',
+    author: 'Sagar Makode',
     headerTitle: 'विविध सरकारी योजना | फॉर्म मार्गदर्शन | महत्वाच्या शासकीय अपडेट्स',
     description: 'आम्ही या चॅनलवर विविध सरकारी योजनांचे फॉर्म कसे भरायचे, तसेच राज्य सरकार आणि केंद्र सरकारच्या योजनांबद्दल संपूर्ण माहिती देतो.',
     language: 'mr', // Updated to Marathi language code
     theme: 'system', // system, dark or light
-    siteUrl: 'https:formsolurtion.netlify.app', // your website URL
+    siteUrl: 'https://formsolution.vercel.app', // your website URL
     siteLogo: '/logo.png',
     socialBanner: '/social-banner.png', // add social banner in the public folder
     whatsapp: 'https://whatsapp.com/channel/0029VaA0CSC90x2w0MgTTR01',
