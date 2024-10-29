@@ -7,21 +7,24 @@ import GithubSlugger, { slug as slugify } from "github-slugger";
 
 const slugger = new GithubSlugger();
 
-const CategoryPage =async ({ params }) => {
+const CategoryPage = async ({ params }) => {
+  let allBlogs = await fetchBlogs()
   const { slug } = await params
 
-  let allBlogs = await fetchBlogs()
 
- 
 
   // Collect all categories from the blogs
   const allCategories = ["all"]; // Initialize with 'all' category
-  allBlogs.forEach((blog) => {
-    const slugified = slugify(blog.tag); // Assuming each blog has a single tag
+ allBlogs.forEach((blog) => {
+  if (blog?.tag) { // Check if blog and blog.tag exist
+    const slugified = slugify(blog.tag);
     if (!allCategories.includes(slugified)) {
       allCategories.push(slugified);
     }
+  }
   });
+
+  
 
   // Sort categories alphabetically
   allCategories.sort();
@@ -33,18 +36,21 @@ const CategoryPage =async ({ params }) => {
     if (slug === "all") {
       return true; // Include all blogs if 'all' category is selected
     }
-    return slugify(blog.tag) === decodedSlug; // Match the single tag
+    return blog?.tag && slugify(blog.tag) === decodedSlug;
   });
+
   
   const sortedBlogs = sortBlogs(filteredBlogs);
+  console.log(sortedBlogs);
+  
 
   return (
     <article className="mt-12 flex flex-col text-dark dark:text-light">
       <div className="px-5 sm:px-10 md:px-24 sxl:px-32 flex flex-col">
         <h1 className="mt-6 font-semibold text-2xl md:text-4xl lg:text-5xl"># {decodedSlug}</h1>
         <span className="mt-2 inline-block">
-        अधिक श्रेण्या शोधा आणि आपल्या ज्ञानाचा विस्तार करा!
-                </span>
+          अधिक श्रेण्या शोधा आणि आपल्या ज्ञानाचा विस्तार करा!
+        </span>
       </div>
 
       {/* Categories Component */}
