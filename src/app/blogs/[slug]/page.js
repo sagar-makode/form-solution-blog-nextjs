@@ -31,26 +31,23 @@ export async function generateMetadata({ params }) {
   const publishedAt = new Date(blog.createdAt).toISOString();
 
 
-  let imageList = [siteMetadata.socialBanner];
+  // let imageList = [siteMetadata.socialBanner];
 
   if (blog.content) {
     imageList = extractImageFromHTML(blog.content);
 
-    imageList =
-      typeof imageList === "string"
-        ? [siteMetadata.siteUrl + imageList.replace("../public", "")]
-        : blog.image;
+    const imageList = extractImageFromHTML(blog.content) || siteMetadata.socialBanner;
+    
   }
-  const ogImages = imageList.map((img) => {
-    return { url: img.includes("http") ? img : siteMetadata.siteUrl + img };
-  });
+  const ogImages = [{ url: imageList.includes("http") ? imageList : `${siteMetadata.siteUrl}${imageList}` }];
+ 
 
   return {
     title: blog.title,
     openGraph: {
       title: blog.title,
       description: blog.description,
-      url: siteMetadata.siteUrl + blog.url,
+      url: `${siteMetadata.siteUrl}/blogs/${decodedSlug}`,
       siteName: siteMetadata.title,
       publishedTime: publishedAt,
       locale: "en_US",
