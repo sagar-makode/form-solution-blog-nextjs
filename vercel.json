@@ -1,9 +1,9 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/", "has": [
-        {
-          "type": "header",
-          "key": "X-Vercel-Ignore",
-          "value": "1"
-        }
-      ] }]
+    "rewrites": [
+      { "source": "/api/(.*)", "destination": "/api/$1" }, 
+      { "source": "/categories/(.*)", "destination": "/categories/$1" }, 
+      { "source": "/blogs/(.*)", "destination": "/blogs/$1" },
+      { "source": "/(.*)", "destination": "/" }
+    ]
   }
+  
