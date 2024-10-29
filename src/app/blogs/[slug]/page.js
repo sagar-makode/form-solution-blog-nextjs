@@ -33,12 +33,9 @@ export async function generateMetadata({ params }) {
 
   // let imageList = [siteMetadata.socialBanner];
 
-  if (blog.content) {
-    imageList = extractImageFromHTML(blog.content);
+  if (!blog) return;
 
-    const imageList = extractImageFromHTML(blog.content) || siteMetadata.socialBanner;
-    
-  }
+  const imageList = extractImageFromHTML(blog.content) || siteMetadata.socialBanner;
   const ogImages = [{ url: imageList.includes("http") ? imageList : `${siteMetadata.siteUrl}${imageList}` }];
  
 
@@ -89,7 +86,7 @@ export default async function BlogPage({ params }) {
 
   let imageList = [siteMetadata.socialBanner];
   if (blog.content) {
-    imageList = extractImageFromHTML(blog.content);
+   let imageList = extractImageFromHTML(blog.content);
 
     imageList =
       typeof imageList === "string"
