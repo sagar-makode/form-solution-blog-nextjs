@@ -3,6 +3,7 @@ import HomeCoverSection from "@/components/Home/HomeCoverSection";
 import RecentPosts from "@/components/Home/RecentPosts";
 import { fetchBlogs } from "@/fetchblogs/fetchBlogs";
 import Image from "next/image";
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
 
