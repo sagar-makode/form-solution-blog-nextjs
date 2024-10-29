@@ -3,7 +3,11 @@ import Blog from "@/models/Blog";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
+  console.log("start 3");
+  
   await connect();
+  console.log("start 4");
+
 
   try {
     // Get the query parameters from the request URL
