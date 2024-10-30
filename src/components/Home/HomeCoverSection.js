@@ -15,7 +15,6 @@ const HomeCoverSection = ({ blogs }) => {
 
     const imageSrc = extractImageFromHTML(blog?.content) || null; // Fallback placeholder if no image found
     
-
     return (
         <div className='w-full inline-block'>
             <article className='flex flex-col items-start justify-end mx-5 sm:mx-10 relative h-[60vh] sm:h-[85vh]'>
@@ -39,7 +38,7 @@ const HomeCoverSection = ({ blogs }) => {
 
                     {/* <div className='mt-6'> */}
 
-                        <Link href={`/blogs/${slug(blog?.title)}`} className='mt-6'>
+                        <Link href={`/blogs/${slug(blog?.slug)}`} className='mt-6'>
                         <h1 className='font-bold capitalize text-lg sm:text-xl md:text-3xl lg:text-4xl'>
                             <span className='bg-gradient-to-r from-accent to-accent dark:from-accentDark/50 
                 dark:to-accentDark/50 bg-[length:0px_6px]

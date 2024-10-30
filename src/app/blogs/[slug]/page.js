@@ -9,7 +9,7 @@ import { format } from "date-fns";
 
 export async function generateStaticParams() {
   let allBlogs = await fetchBlogs()
-  return allBlogs.map((blog) => ({ slug: slugify(blog.title) }));
+  return allBlogs.map((blog) => ({ slug: slugify(blog.slug) }));
 }
 
 export async function generateMetadata({ params }) {
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
   const decodedSlug = decodeURIComponent(slug); // Decode the URL-encoded characters
 
   const blog = allBlogs.find((blog) => {
-    const slugifiedTitle = slugify(blog?.title)
+    const slugifiedTitle = slugify(blog?.slug)
 
     return slugifiedTitle === decodedSlug;
   });
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
 
   const imageList = extractImageFromHTML(blog.content) || siteMetadata.socialBanner;
   const ogImages = [{ url: imageList.includes("http") ? imageList : `${siteMetadata.siteUrl}${imageList}` }];
- 
+
   return {
     title: blog.title,
     openGraph: {
@@ -65,7 +65,7 @@ export default async function BlogPage({ params }) {
   const decodedSlug = decodeURIComponent(slug); // Decode the URL-encoded characters
 
   const blog = allBlogs.find((blog) => {
-    const slugifiedTitle = slugify(blog?.title)
+    const slugifiedTitle = slugify(blog?.slug)
 
     return slugifiedTitle === decodedSlug;
   });
@@ -85,7 +85,7 @@ export default async function BlogPage({ params }) {
 
   let imageList = [siteMetadata.socialBanner];
   if (blog.content) {
-   let imageList = extractImageFromHTML(blog.content);
+    let imageList = extractImageFromHTML(blog.content);
 
     imageList =
       typeof imageList === "string"
@@ -114,9 +114,10 @@ export default async function BlogPage({ params }) {
       />
       <article>
 
-
-        <div className="grid grid-cols-12  gap-y-8 lg:gap-8 sxl:gap-16 mt-8 px-5 md:px-10">
-
+        <h1 className="text-2xl md:text-2xl font-bold gap-y-8 lg:gap-8 sxl:gap-16 mt-4 px-6 md:px-10">
+          {blog.title}
+        </h1>
+        <div className="grid grid-cols-12  gap-y-8 lg:gap-8 sxl:gap-16 mt-4 px-5 md:px-10">
           <div className="col-span-12 lg:col-span-8 font-in prose prose-sm md:prose-lg w-full
     prose-blockquote:bg-accent/20 
     prose-blockquote:p-2
@@ -162,12 +163,12 @@ export default async function BlogPage({ params }) {
                       />
                     </div>
                     <a
-                      href={`/blogs/${slugify(latestBlog.title)}`}
-                      className="flex-grow text-left w-16 h-16 mr-4"
+                      href={`/blogs/${slugify(latestBlog.slug)}`}
+                      className="flex-grow text-left w-16 h-16 mr-4 overflow-hidden truncate"
                     >
                       {latestBlog.title}
-                      <div className="text-sm text-gray-500">
-                        {format(new Date(blog?.createdAt), "MMMM dd, yyyy")}
+                      <div className="text-sm text-gray-500 whitespace-nowrap">
+                        {format(new Date(latestBlog.createdAt), "MMMM dd, yyyy")}
                       </div>
                     </a>
                   </li>

@@ -12,7 +12,7 @@ const BlogLayoutThree = ({ blog }) => {
 
   return (
     <div className="group flex flex-col items-center text-dark dark:text-light">
-      <Link  href={`/blogs/${slug(blog.title)}`} className="h-full rounded-xl overflow-hidden">
+      <Link  href={`/blogs/${slug(blog.slug)}`} className="h-full rounded-xl overflow-hidden">
         <Image
           src={imageSrc || null}
           // placeholder="blur"
@@ -30,7 +30,7 @@ const BlogLayoutThree = ({ blog }) => {
         <span className="uppercase text-accent dark:text-accentDark font-semibold text-xs sm:text-sm">
           {blog.tag}
         </span>
-        <Link href={`/blogs/${slug(blog.title)}`} className="inline-block my-1">
+        <Link href={`/blogs/${slug(blog.slug)}`} className="inline-block my-1">
           <h2 className="font-semibold capitalize  text-base sm:text-lg">
             <span
               className="bg-gradient-to-r from-accent/50 to-accent/50  dark:from-accentDark/50
