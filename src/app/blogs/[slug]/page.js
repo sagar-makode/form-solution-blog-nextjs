@@ -38,13 +38,12 @@ export async function generateMetadata({ params }) {
   const imageList = extractImageFromHTML(blog.content) || siteMetadata.socialBanner;
   const ogImages = [{ url: imageList.includes("http") ? imageList : `${siteMetadata.siteUrl}${imageList}` }];
  
-
   return {
     title: blog.title,
     openGraph: {
       title: blog.title,
       description: blog.description,
-      url: `${siteMetadata.siteUrl}/blogs/${decodedSlug}`,
+      url: `${siteMetadata.siteUrl}/blogs/${slugify(decodedSlug)}`,
       siteName: siteMetadata.title,
       publishedTime: publishedAt,
       locale: "en_US",
