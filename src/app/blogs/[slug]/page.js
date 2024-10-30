@@ -114,7 +114,7 @@ export default async function BlogPage({ params }) {
       />
       <article>
 
-        <h1 className="text-2xl md:text-2xl font-bold gap-y-8 lg:gap-8 sxl:gap-16 mt-4 px-6 md:px-10">
+        <h1 className="text-2xl md:text-2xl font-bold gap-y-8 lg:gap-8 sxl:gap-16 mt-4 px-6 md:px-10 dark:text-white">
           {blog.title}
         </h1>
         <div className="grid grid-cols-12  gap-y-8 lg:gap-8 sxl:gap-16 mt-4 px-5 md:px-10">
@@ -134,7 +134,7 @@ export default async function BlogPage({ params }) {
     sm:first-letter:text-5xl
 ">
             <div
-              className="blog-content" // New class for your content
+              className="blog-content dark:text-white" // New class for your content
               dangerouslySetInnerHTML={{ __html: blog.content }}
             />
           </div>
