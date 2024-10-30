@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import channelImg from "../../../public/logo.jpg"
+import channelImg from "../../../public/logo.png"
 
 const Logo = () => {
   return (

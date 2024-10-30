@@ -22,7 +22,7 @@ const Footer = () => {
       आम्ही या चॅनलवर विविध सरकारी योजनांचे फॉर्म कसे भरायचे, तसेच राज्य सरकार आणि केंद्र सरकारच्या योजनांबद्दल संपूर्ण माहिती देतो. 23000+ सदस्यांच्या समुदायामध्ये सामील व्हा आणि ताज्या बातम्या जाणून घ्या.
       </p>
 
-      <form
+      {/* <form
         onSubmit={handleSubmit(onSubmit)}
         className="mt-6 w-fit sm:min-w-[384px] flex items-stretch bg-light dark:bg-dark p-1 sm:p-2 rounded mx04"
       >
@@ -37,7 +37,7 @@ const Footer = () => {
           type="submit"
           className="bg-dark text-light dark:text-dark dark:bg-light cursor-pointer font-medium rounded px-3 sm:px-5 py-1"
         />
-      </form>
+      </form> */}
       <div className="flex items-center mt-8">
         <a
           href={siteMetadata.whatsapp}
