@@ -43,7 +43,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: blog.title,
       description: blog.description,
-      url: `${siteMetadata.siteUrl}/blogs/${slugify(decodedSlug)}`,
+      url: `${siteMetadata.siteUrl}/blog/${slugify(decodedSlug)}`,
       siteName: siteMetadata.title,
       publishedTime: publishedAt,
       locale: "en_US",
@@ -145,7 +145,7 @@ export default async function BlogPage({ params }) {
               open
             >
               <summary className="text-lg font-semibold capitalize cursor-pointer">
-                Table Of Content
+              Latest post
               </summary>
               <ul className="mt-4 font-in text-base">
                 {latestBlogs.map((latestBlog) => (
@@ -163,7 +163,7 @@ export default async function BlogPage({ params }) {
                       />
                     </div>
                     <a
-                      href={`/blogs/${slugify(latestBlog.slug)}`}
+                      href={`/blog/${slugify(latestBlog.slug)}`}
                       className="flex-grow text-left w-16 h-16 mr-4 overflow-hidden truncate"
                     >
                       {latestBlog.title}
