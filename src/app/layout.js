@@ -29,6 +29,7 @@ export const metadata = {
     default: siteMetadata.title, // a default is required when creating a template
   },
   description: siteMetadata.description,
+  keywords: ["formsolution", "onlineform", "sarkari yojana","latest Update"], // Custom tags
   openGraph: {
     title: siteMetadata.title,
     description: siteMetadata.description,
@@ -37,6 +38,9 @@ export const metadata = {
     images: [siteMetadata.socialBanner],
     locale: "en_US",
     type: "website",
+    article: {
+      tags: ["Blog", "Tech", "Updates"], // Open Graph article tags
+    },
   },
   robots: {
     index: true,
@@ -59,6 +63,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+       <head>
+        {/* Example custom tags */}
+        <meta name="keywords" content="formsolution,onlineform,sarkari yojana,latest Update" />
+        <meta name="author" content="form solution" />
+      </head>
     <body
      className={cx(
        inter.variable,
