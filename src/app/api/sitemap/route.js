@@ -6,9 +6,9 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   const fields = [
     {
-      loc: `${process.env.SITEMAP_URL}/`,  // Homepage
+      loc: `${process.env.SITEMAP_URL}`,  // Homepage
       lastmod: new Date().toISOString(),
-      changefreq: 'daily',
+      changefreq: 'always',
       priority: '1.0',
     },
   ];
@@ -19,8 +19,8 @@ export async function GET() {
     fields.push({
       loc: `${process.env.SITEMAP_URL}/blog/${blog.slug}`, // Adjusted blog URL
       lastmod: new Date(blog.createdAt).toISOString(),
-      changefreq: 'weekly',
-      priority: '0.8',
+      changefreq: 'always',
+      priority: '0.9',
     });
   });
 
@@ -30,8 +30,8 @@ export async function GET() {
     fields.push({
       loc: `${process.env.SITEMAP_URL}/categories/${category.slug}`, // Adjusted category URL
       lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
-      priority: '0.6',
+      changefreq: 'always',
+      priority: '0.7',
     });
   });
 
