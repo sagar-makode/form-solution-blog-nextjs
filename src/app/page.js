@@ -13,7 +13,6 @@ export default async function Home() {
     <main className="flex flex-col items-center justify-center">
 
       <HomeCoverSection blogs={allblogs} />
-    
       <FeaturedPosts blogs={allblogs} />
       <RecentPosts blogs={allblogs} />
 
