@@ -112,7 +112,6 @@ export default async function BlogPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <link rel="canonical" href={`${siteMetadata.siteUrl}/blog/${slugify(decodedSlug)}`} />
 
       <article>
 
