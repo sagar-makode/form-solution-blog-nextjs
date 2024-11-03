@@ -2,8 +2,14 @@ import mongoose from 'mongoose';
 
 export async function connect() {
     try {
-        
-        mongoose.connect(process.env.MONGODB_URL);
+
+        // Connect to MongoDB with additional options
+        await mongoose.connect(process.env.MONGODB_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 60000, // Increase timeout to 60 seconds
+        });
+        // mongoose.connect(process.env.MONGODB_URL);
         const connection = mongoose.connection;
 
         connection.on('connected', () => {
@@ -12,13 +18,13 @@ export async function connect() {
 
         connection.on('error', (err) => {
             console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
-            process.exit();
+            process.exit(1);
         })
 
     } catch (error) {
         console.log('Something goes wrong!');
         console.log(error);
-        
+
     }
 
 
