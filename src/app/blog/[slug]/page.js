@@ -112,6 +112,8 @@ export default async function BlogPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <link rel="canonical" href={`${siteMetadata.siteUrl}/blog/${slugify(decodedSlug)}`} />
+
       <article>
 
         <h1 className="text-2xl md:text-2xl font-bold gap-y-8 lg:gap-8 sxl:gap-16 mt-4 px-6 md:px-10 dark:text-white">
@@ -145,7 +147,7 @@ export default async function BlogPage({ params }) {
               open
             >
               <summary className="text-lg font-semibold capitalize cursor-pointer">
-              Latest post
+                Latest post
               </summary>
               <ul className="mt-4 font-in text-base">
                 {latestBlogs.map((latestBlog) => (

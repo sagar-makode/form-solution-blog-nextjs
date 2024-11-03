@@ -63,8 +63,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
        <head>
-       <link rel="canonical" href={siteMetadata.siteUrl} /> {/* Use the appropriate URL for your canonical */}
-        {/* Example custom tags */}
+       <link rel="canonical" href={siteMetadata.siteUrl} />
         <meta name="keywords" content="formsolution,form solution,marathi Upadate,onlineform,sarkari yojana,latest Update" />
         <meta name="author" content="form solution" />
       </head>
