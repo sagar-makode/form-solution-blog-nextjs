@@ -29,7 +29,6 @@ export const metadata = {
     default: siteMetadata.title, // a default is required when creating a template
   },
   description: siteMetadata.description,
-  keywords: ["formsolution", "onlineform", "sarkari yojana","latest Update"], // Custom tags
   openGraph: {
     title: siteMetadata.title,
     description: siteMetadata.description,
@@ -65,7 +64,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
        <head>
         {/* Example custom tags */}
-        <meta name="keywords" content="formsolution,onlineform,sarkari yojana,latest Update" />
+        <meta name="keywords" content="formsolution,form solution,marathi Upadate,onlineform,sarkari yojana,latest Update" />
         <meta name="author" content="form solution" />
       </head>
     <body
