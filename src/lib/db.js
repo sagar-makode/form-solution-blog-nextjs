@@ -5,8 +5,6 @@ export async function connect() {
 
         // Connect to MongoDB with additional options
         await mongoose.connect(process.env.MONGODB_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
             serverSelectionTimeoutMS: 60000, // Increase timeout to 60 seconds
         });
         // mongoose.connect(process.env.MONGODB_URL);
