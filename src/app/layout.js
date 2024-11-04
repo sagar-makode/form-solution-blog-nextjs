@@ -35,7 +35,7 @@ export const metadata = {
     url: siteMetadata.siteUrl,
     siteName: siteMetadata.title,
     images: [siteMetadata.socialBanner],
-    locale: "en_US",
+    locale: "mr-IN",
     type: "website",
     article: {
       tags: ["Blog", "Tech", "Updates"], // Open Graph article tags
@@ -61,7 +61,7 @@ export const metadata = {
 };
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="mr">
        <head>
         <meta name="keywords" content="formsolution,form solution,marathi Upadate,onlineform,sarkari yojana,latest Update" />
         <meta name="author" content="form solution" />
