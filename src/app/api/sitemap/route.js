@@ -1,6 +1,8 @@
 import { fetchBlogs } from '@/fetchblogs/fetchBlogs';
 import { fetchCategories } from '@/fetchblogs/fetchCategories'; // Import your category fetching function
 import { getServerSideSitemap } from 'next-sitemap';
+import { slug as slugify } from "github-slugger"; // Renaming to avoid conflicts
+
 import { NextResponse } from 'next/server';
 
 export async function GET() {
@@ -17,7 +19,7 @@ export async function GET() {
   const allBlogs = await fetchBlogs();
   allBlogs.forEach((blog) => {
     fields.push({
-      loc: `${process.env.SITEMAP_URL}/blog/${blog.slug}`, // Adjusted blog URL
+      loc: `${process.env.SITEMAP_URL}/blog/${slugify(blog.slug)}`, // Adjusted blog URL
       lastmod: new Date(blog.createdAt).toISOString(),
       changefreq: 'always',
       priority: '0.9',
