@@ -1,7 +1,7 @@
 export async function fetchBlogs() {
 
     try {
-     
+     console.log("Fetching blogs from:", `${process.env.NEXT_PUBLIC_API_URL}`);
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
             // Remove cache: "no-store" for static optimization
             next: { revalidate: 10 }, // Adjust revalidation interval as needed
@@ -12,6 +12,7 @@ export async function fetchBlogs() {
             console.error("Failed to fetch:", res.status, res.statusText, errorText);
             throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
         }
+        console.log("Fetch response status:", res.status, res);
         let data = await res.json()
         return data
         
