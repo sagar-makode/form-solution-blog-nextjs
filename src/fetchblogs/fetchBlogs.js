@@ -1,23 +1,31 @@
+import { connect } from "@/lib/db";
+import Blog from "@/models/Blog";
+
 export async function fetchBlogs() {
-
     try {
-     console.log("Fetching blogs from:", `${process.env.NEXT_PUBLIC_API_URL}`);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
-            // Remove cache: "no-store" for static optimization
-            next: { revalidate: 10 }, // Adjust revalidation interval as needed
-          });
-
-        if (!res.ok) {
-            const errorText = await res.text();
-            console.error("Failed to fetch:", res.status, res.statusText, errorText);
-            throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
-        }
-        console.log("Fetch response status:", res.status, res);
-        let data = await res.json()
-        return data
+        await connect();
+        
+        const blogs = await Blog.find({});
+        
+        // Convert Date objects to ISO strings
+        const blogsWithStringDates = blogs.map(blog => {
+            const blogData = blog.toObject ? blog.toObject() : blog;
+            
+            // Convert Date objects to ISO strings
+            if (blogData.createdAt instanceof Date) {
+                blogData.createdAt = blogData.createdAt.toISOString();
+            }
+            if (blogData.updatedAt instanceof Date) {
+                blogData.updatedAt = blogData.updatedAt.toISOString();
+            }
+            
+            return blogData;
+        });
+        
+        return blogsWithStringDates;
         
     } catch (error) {
-        console.error("Error fetching blogs:", error);
+        console.error("Error fetching blogs from database:", error);
         return null;
     }
 }
