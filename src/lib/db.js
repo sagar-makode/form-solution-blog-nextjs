@@ -1,29 +1,58 @@
 import mongoose from 'mongoose';
 
+const MONGODB_URI = process.env.MONGODB_URL;
+
+if (!MONGODB_URI) {
+  throw new Error(
+    'Please define the MONGODB_URI environment variable inside .env.local'
+  );
+}
+
+/**
+ * Global is used here to maintain a cached connection across hot reloads
+ * in development. This prevents connections growing exponentially
+ * during API Route usage.
+ */
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
 export async function connect() {
-    try {
+  if (cached.conn) {
+    return cached.conn;
+  }
 
-        // Connect to MongoDB with additional options
-        await mongoose.connect(process.env.MONGODB_URL, {
-            serverSelectionTimeoutMS: 60000, // Increase timeout to 60 seconds
-        });
-        // mongoose.connect(process.env.MONGODB_URL);
-        const connection = mongoose.connection;
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false,
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+    };
 
-        connection.on('connected', () => {
-            console.log('MongoDB connected successfully');
-        })
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      console.log('MongoDB connected successfully');
+      return mongoose;
+    });
 
-        connection.on('error', (err) => {
-            console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
-            process.exit(1);
-        })
+    // Handle connection events on the default connection
+    mongoose.connection.on('error', (err) => {
+      console.log('MongoDB connection error: ' + err);
+    });
 
-    } catch (error) {
-        console.log('Something goes wrong!');
-        console.log(error);
+    mongoose.connection.on('disconnected', () => {
+      console.log('MongoDB disconnected');
+    });
+  }
 
-    }
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    throw e;
+  }
 
-
+  return cached.conn;
 }

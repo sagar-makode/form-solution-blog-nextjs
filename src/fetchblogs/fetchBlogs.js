@@ -3,29 +3,29 @@ import Blog from "@/models/Blog";
 
 export async function fetchBlogs() {
     try {
+        // This will use the cached connection
         await connect();
         
-        const blogs = await Blog.find({});
+        const blogs = await Blog.find({}).sort({ createdAt: -1 });
         
-        // Convert Date objects to ISO strings
+        // Convert to plain objects and handle dates
         const blogsWithStringDates = blogs.map(blog => {
-            const blogData = blog.toObject ? blog.toObject() : blog;
+            const blogObj = blog.toObject();
             
-            // Convert Date objects to ISO strings
-            if (blogData.createdAt instanceof Date) {
-                blogData.createdAt = blogData.createdAt.toISOString();
+            if (blogObj.createdAt instanceof Date) {
+                blogObj.createdAt = blogObj.createdAt.toISOString();
             }
-            if (blogData.updatedAt instanceof Date) {
-                blogData.updatedAt = blogData.updatedAt.toISOString();
+            if (blogObj.updatedAt instanceof Date) {
+                blogObj.updatedAt = blogObj.updatedAt.toISOString();
             }
             
-            return blogData;
+            return blogObj;
         });
         
         return blogsWithStringDates;
         
     } catch (error) {
         console.error("Error fetching blogs from database:", error);
-        return null;
+        return [];
     }
 }
