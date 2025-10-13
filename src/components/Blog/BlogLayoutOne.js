@@ -16,19 +16,19 @@ const BlogLayoutOne = ({ blog }) => {
             bg-gradient-to-b from-transparent from-0% to-dark/90 rounded-xl z-10
             "
       />
-      <Image
-        src={imageSrc || null}
-        // placeholder="blur"
-        // blurDataURL={blog.image.blurhashDataUrl}
-        alt={blog?.title || null}
-        width={1920} // Use the actual width of the image
-        height={1280} // Use the actual height of the image
-        className="w-full h-full object-center  rounded-xl group-hover:scale-105 transition-all ease duration-300"
-        sizes="(max-width: 1180px) 100vw, 50vw"
-      />
+     {imageSrc && (
+        <Image
+          src={imageSrc}
+          alt={blog?.title || "Blog image"}
+          width={1920}
+          height={1280}
+          className="w-full h-full object-center rounded-xl group-hover:scale-105 transition-all ease duration-300"
+          sizes="(max-width: 1180px) 100vw, 50vw"
+        />
+      )}
 
       <div className="w-full absolute bottom-0 p-4 xs:p-6 sm:p-10 z-20">
-      <Tag link={`/categories/${slug(blog?.tag)}`} name={blog?.tag}
+      <Tag link={`/categories/${slug(blog?.category)}`} name={blog?.category}
         className="px-6 text-xs  sm:text-sm py-1 sm:py-2 !border "
         />
 

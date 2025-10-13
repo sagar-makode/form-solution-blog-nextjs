@@ -21,20 +21,19 @@ const HomeCoverSection = ({ blogs }) => {
                 <div className='absolute top-0 left-0 bottom-0 right-0 h-full
             bg-gradient-to-b from-transparent from-0% to-dark/90 rounded-3xl z-0
             ' />
-                <Image src={imageSrc || null}
-                    // placeholder='blur'
-                    // blurDataURL={blog.image.blurhashDataUrl}
-                    alt={blog?.title || null}
-                    fill
-                    className='w-full h-full object-center  rounded-3xl -z-10'
-                    sizes='100vw'
-                    // width={1920}
-                    // height={1237}
-                    priority
-                />
+              {imageSrc && (
+                    <Image 
+                        src={imageSrc}
+                        alt={blog?.title || "Featured blog image"}
+                        fill
+                        className='w-full h-full object-center rounded-3xl -z-10'
+                        sizes='100vw'
+                        priority
+                    />
+                )}
 
                 <div className='w-full lg:w-3/4 p-6 sm:p-8 md:p-12  lg:p-16 flex flex-col items-start justify-center z-0 text-light'>
-                    <Tag link={`/categories/${slug(blog?.tag)}`} name={blog?.tag} />
+                    <Tag link={`/categories/${slug(blog?.category)}`} name={blog?.category} />
 
                     {/* <div className='mt-6'> */}
 

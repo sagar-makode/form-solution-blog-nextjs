@@ -188,14 +188,15 @@ export default async function BlogPage({ params }) {
                 {latestBlogs.map((latestBlog) => (
                   <li key={latestBlog._id} className="flex items-center mb-4">
                     <div className="w-16 h-16 mr-4">
-                      <Image
-                        src={latestBlog.imageSrc || null}
-                        alt={latestBlog.title || null}
-                        className=" w-full h-full"
-                        width={1920} // Use the actual width of the image
-                        height={1280} // Use the actual height of the image
-
-                      />
+                      {latestBlog.imageSrc && (
+                        <Image
+                          src={latestBlog.imageSrc}
+                          alt={latestBlog.title || "Blog image"}
+                          className="w-full h-full"
+                          width={1920}
+                          height={1280}
+                        />
+                      )}
                     </div>
                     <a
                       href={`/blog/${slugify(latestBlog.slug)}`}

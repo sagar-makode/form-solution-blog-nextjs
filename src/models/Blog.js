@@ -6,7 +6,7 @@ const BlogSchema = new mongoose.Schema(
     title: {
       type: String
     },
-    tag: {
+    category: {
       type: String
     },
     

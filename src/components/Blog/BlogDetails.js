@@ -14,8 +14,8 @@ const BlogDetails = ({ blog, slug: blogSlug }) => {
         {/* <ViewCounter slug={blogSlug} /> */}
       </span>
       <div className="m-3">{blog.title}</div>
-      <Link href={`/categories/${slug(blog.tag)}`} className="m-3">
-        #{blog.tag}
+      <Link href={`/categories/${slug(blog.category)}`} className="m-3">
+        #{blog.category}
       </Link>
     </div>
   );

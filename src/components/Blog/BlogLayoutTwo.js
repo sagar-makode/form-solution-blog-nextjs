@@ -14,21 +14,21 @@ const BlogLayoutTwo = ({ blog }) => {
       href={`/blog/${slug(blog?.slug)}`}
         className=" col-span-12  lg:col-span-4 h-full rounded-xl overflow-hidden"
       >
-        <Image
-          src={imageSrc || null}
-          // placeholder="blur"
-          // blurDataURL={blog.image.blurhashDataUrl}
-          alt={blog?.title || null}
-          width={1920} // Use the actual width of the image
-          height={1280} // Use the actual height of the image
-          className="aspect-square w-full h-full  object-center group-hover:scale-105 transition-all ease duration-300"
-          sizes="(max-width: 640px) 100vw,(max-width: 1024px) 50vw, 33vw"
-        />
+    {imageSrc && (
+          <Image
+            src={imageSrc}
+            alt={blog?.title || "Blog image"}
+            width={1920}
+            height={1280}
+            className="aspect-square w-full h-full object-center group-hover:scale-105 transition-all ease duration-300"
+            sizes="(max-width: 640px) 100vw,(max-width: 1024px) 50vw, 33vw"
+          />
+        )}
       </Link>
 
       <div className="col-span-12  lg:col-span-8 w-full">
         <span className="inline-block w-full uppercase text-accent dark:text-accentDark font-semibold text-xs sm:text-sm">
-          {blog?.tag}
+          {blog?.category}
         </span>
         <Link href={`/blog/${slug(blog?.slug)}`}  className="inline-block my-1">
           <h2 className="font-semibold capitalize text-base sm:text-lg">

@@ -9,12 +9,12 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams() {
   let allBlogs = await fetchBlogs();
   
-  // Get all unique categories from the single 'tag' field
+  // Get all unique categories from the single 'category' field
   const allCategories = new Set(["all"]);
   
   allBlogs.forEach((blog) => {
-    if (blog?.tag) {
-      const slugified = slugify(blog.tag);
+    if (blog?.category) {
+      const slugified = slugify(blog.category);
       allCategories.add(slugified);
     }
   });
@@ -33,10 +33,10 @@ export async function generateMetadata({ params }) {
   const getCategoryDisplayName = (slug) => {
     if (slug === "all") return "सर्व लेख";
     
-    // Find the original tag name from any blog
+    // Find the original category name from any blog
     for (let blog of allBlogs) {
-      if (blog?.tag && slugify(blog.tag) === slug) {
-        return blog.tag; // Return the original tag name
+      if (blog?.category && slugify(blog.category) === slug) {
+        return blog.category; // Return the original category name
       }
     }
     
@@ -48,10 +48,10 @@ export async function generateMetadata({ params }) {
 
   const categoryName = getCategoryDisplayName(decodedSlug);
   
-  // Count blogs in this category using single 'tag' field
+  // Count blogs in this category using single 'category' field
   const blogCount = allBlogs.filter((blog) => {
     if (decodedSlug === "all") return true;
-    return blog?.tag && slugify(blog.tag) === decodedSlug;
+    return blog?.category && slugify(blog.category) === decodedSlug;
   }).length;
 
   // Use proper slug for canonical URL (not decoded)
@@ -87,12 +87,12 @@ const CategoryPage = async ({ params }) => {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
 
-  // Collect all categories from the single 'tag' field
+  // Collect all categories from the single 'category' field
   const allCategories = new Set(["all"]);
   
   allBlogs.forEach((blog) => {
-    if (blog?.tag) {
-      const slugified = slugify(blog.tag);
+    if (blog?.category) {
+      const slugified = slugify(blog.category);
       allCategories.add(slugified);
     }
   });
@@ -100,12 +100,12 @@ const CategoryPage = async ({ params }) => {
   // Convert Set to Array and sort
   const sortedCategories = Array.from(allCategories).sort();
 
-  // Filter blogs based on the current category using single 'tag' field
+  // Filter blogs based on the current category using single 'category' field
   const filteredBlogs = allBlogs.filter((blog) => {
     if (decodedSlug === "all") {
       return true;
     }
-    return blog?.tag && slugify(blog.tag) === decodedSlug;
+    return blog?.category && slugify(blog.category) === decodedSlug;
   });
 
   if (filteredBlogs.length === 0 && decodedSlug !== "all") {
@@ -118,10 +118,10 @@ const CategoryPage = async ({ params }) => {
   const getCategoryDisplayName = (slug) => {
     if (slug === "all") return "सर्व";
     
-    // Find the original tag name from any blog
+    // Find the original category name from any blog
     for (let blog of allBlogs) {
-      if (blog?.tag && slugify(blog.tag) === slug) {
-        return blog.tag; // Return the original tag name
+      if (blog?.category && slugify(blog.category) === slug) {
+        return blog.category; // Return the original category name
       }
     }
     
