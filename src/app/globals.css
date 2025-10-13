@@ -6,7 +6,87 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Blog content specific styles */
+.blog-content {
+    max-width: none;
+}
 
+.blog-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.blog-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1f2937;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+}
+
+.blog-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: #1f2937;
+}
+
+.blog-content p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+}
+
+.blog-content ul {
+    margin-bottom: 1rem;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.blog-content li {
+    margin-bottom: 0.5rem;
+}
+
+.blog-content img {
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    border-radius: 0.5rem;
+}
+
+.blog-content div[align="center"] {
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.blog-content div[align="center"] img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-content div[align="center"] p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.blog-content em {
+    font-style: italic;
+}
+
+.blog-content strong {
+    font-weight: 600;
+}
+
+/* Code block styles */
 h1 > a > .icon.icon-link:before,
 h2 > a > .icon.icon-link:before,
 h3 > a > .icon.icon-link:before {
@@ -25,7 +105,6 @@ code {
 code > [data-line]::before {
     counter-increment: line;
     content: counter(line);
-    /* Other styling */
     display: inline-block;
     width: 1rem;
     margin-right: 2rem;
@@ -79,16 +158,9 @@ code[data-line-numbers-max-digits='3'] > [data-line]::before {
     color: #747474;
 }
 
-.blog-content img {
-    width: 100% !important;
-    height: auto !important;
-    margin-bottom: 20px !important;
-  }
-
-
-  .latestblogmage {
+.latestblogimage {
     width: 100%;
     height: auto;
-    object-fit: contain; /* Or any other value you prefer */
-    border-radius: 0.5rem; /* If you want rounded corners */
-  }
+    object-fit: contain;
+    border-radius: 0.5rem;
+}
