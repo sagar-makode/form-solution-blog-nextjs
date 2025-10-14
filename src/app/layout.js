@@ -62,33 +62,37 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="mr">
-       <head>
+      <head>
         <meta name="keywords" content="formsolution,form solution,marathi Upadate,onlineform,sarkari yojana,latest Update" />
         <meta name="author" content="form solution" />
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2101506600810321"
+          crossorigin="anonymous"></script>
+
       </head>
-    <body
-     className={cx(
-       inter.variable,
-       manrope.variable,
-       "font-mr bg-light dark:bg-dark"
-     )}
-   >
-       <Script id="theme-switcher" strategy="beforeInteractive">
-       {`if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      <body
+        className={cx(
+          inter.variable,
+          manrope.variable,
+          "font-mr bg-light dark:bg-dark"
+        )}
+      >
+        <Script id="theme-switcher" strategy="beforeInteractive">
+          {`if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
  document.documentElement.classList.add('dark')
 } else {
  document.documentElement.classList.remove('dark')
 }`}
-     </Script>
-     <Header />
-     {children}
-     <Analytics />
-     <SpeedInsights />
+        </Script>
+        <Header />
+        {children}
+        <Analytics />
+        <SpeedInsights />
 
 
-     <Footer />
+        <Footer />
 
-   </body>
- </html>
+      </body>
+    </html>
   );
 }
